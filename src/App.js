@@ -14,20 +14,19 @@ class App extends Component {
     ]
   };
 
-  handleClick = e => {
+  addNinja = ninja => {
+    ninja.id = Math.random();
+    let ninjas = [...this.state.ninjas, ninja];
     this.setState({
-      name: e.target.value
+      ninjas: ninjas
     });
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log(this.state.name);
-  };
+
   render() {
     return (
       <div>
         <Ninjas ninjas={this.state.ninjas} />
-        <AddNinja />
+        <AddNinja addNinja={this.addNinja} />
       </div>
     );
   }
